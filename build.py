@@ -61,6 +61,7 @@ if __name__ == "__main__":
 
     # ADD METADATA
     files.append("manifest.toml")
+    files.append("icon.png")
 
     for path in files:
         shutil.copyfile(f"{path}", f"build/{path}")
