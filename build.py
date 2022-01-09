@@ -38,7 +38,6 @@ if __name__ == "__main__":
     # ADD JS
     files.extend([
         "js/zepto.min.js",
-        "js/simple-undo.min.js",
         "js/drawingboard.min.js"
     ])
     with open("js/index.js") as file:
