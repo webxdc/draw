@@ -23,6 +23,15 @@ def get_parser() -> argparse.ArgumentParser:
     return parser
 
 
+def size_fmt(num: float) -> str:
+    suffix = "B"
+    for unit in ["", "Ki", "Mi", "Gi", "Ti", "Pi", "Ei", "Zi"]:
+        if abs(num) < 1024.0:
+            return "%3.1f%s%s" % (num, unit, suffix)
+        num /= 1024.0
+    return "%.1f%s%s" % (num, "Yi", suffix)
+
+
 if __name__ == "__main__":
     args = get_parser().parse_args()
     app_archive = f"{args.name}.xdc"
@@ -71,4 +80,6 @@ if __name__ == "__main__":
     os.rename(f"{app_archive}.zip", app_archive)
     shutil.copyfile("webxdc.js", "build/webxdc.js")
 
-    print(f"App saved as: {app_archive}")
+    with open(app_archive, "rb") as file:
+        size = len(file.read())
+    print(f"App saved as: {app_archive} ({size_fmt(size)})")
