@@ -2,7 +2,6 @@
 import argparse
 import os
 import shutil
-from io import StringIO
 
 import htmlmin
 import lesscpy
@@ -34,7 +33,7 @@ def size_fmt(num: float) -> str:
 
 if __name__ == "__main__":
     args = get_parser().parse_args()
-    app_archive = f"{args.name}.xdc"
+    app_archive = args.name if args.name.endswith(".xdc") else f"{args.name}.xdc"
     files = []
 
     # CLEAN
@@ -45,27 +44,26 @@ if __name__ == "__main__":
         os.remove(app_archive)
 
     # ADD JS
-    files.extend([
-        "js/zepto.min.js",
-        "js/drawingboard.min.js"
-    ])
-    with open("js/index.js") as file:
-        script = jsmin(file.read()).replace("\n", ";")
-    with open("build/js/index.js", "w") as file:
-        file.write(script)
+    files.extend(
+        [
+            "js/zepto.min.js",
+            "js/drawingboard.min.js",
+        ]
+    )
+    with open("js/index.js") as src:
+        with open("build/js/index.js", "w") as dest:
+            dest.write(jsmin(src.read()).replace("\n", ";"))
 
     # ADD CSS
     files.append("css/drawingboard.min.css")
-    with open("css/style.css") as file:
-        css = lesscpy.compile(file, minify=True, xminify=True)
-        with open("build/css/style.css", "w") as file:
-            file.write(css)
+    with open("css/style.css") as src:
+        with open("build/css/style.css", "w") as dest:
+            dest.write(lesscpy.compile(src, minify=True, xminify=True))
 
     # ADD HTML
-    with open("index.html") as file:
-        html = htmlmin.minify(file.read())
-    with open("build/index.html", "w") as file:
-        file.write(html)
+    with open("index.html") as src:
+        with open("build/index.html", "w") as dest:
+            dest.write(htmlmin.minify(src.read()))
 
     # ADD METADATA
     files.append("manifest.toml")
