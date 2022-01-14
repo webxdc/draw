@@ -10,7 +10,7 @@ To test the app you can simply open the `index.html` file.
 
 ```sh
 pip3 install -r ./requirements.txt
-python3 ./build.py --name draw
+python3 ./build.py
 ```
 
-Then the file `draw.xdc` should be available.
+The output is a file with `.xdc` extension.
