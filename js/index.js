@@ -3,7 +3,8 @@ DrawingBoard.Control.Lock = DrawingBoard.Control.extend({
     initialize: function() {
 	this.$el.append('<button class="drawing-board-control-download-button"></button>');
 	this.$el.on('click', '.drawing-board-control-download-button', $.proxy(function(e) {
-            window.webxdc.sendUpdate(this.board.getImg(), window.webxdc.selfName() + ' sent a draw');
+            const desc = window.webxdc.selfName() + ' sent a draw';
+            window.webxdc.sendUpdate({payload: this.board.getImg(), summary: desc}, desc);
 	    e.preventDefault();
 	}, this));
     }
