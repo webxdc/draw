@@ -1,3 +1,5 @@
+let board;
+
 DrawingBoard.Control.Lock = DrawingBoard.Control.extend({
     name: 'lock',
     initialize: function() {
@@ -10,6 +12,10 @@ DrawingBoard.Control.Lock = DrawingBoard.Control.extend({
     }
 });
 
+setImg = (url) => {
+    document.getElementById('board').innerHTML = '<img style="max-width:100%;height:auto" src="' + url +'">';
+};
+
 onload = () => {
     window.webxdc.setUpdateListener((update) => {
         setImg(update.payload);
@@ -18,18 +24,12 @@ onload = () => {
     if (update) {
         setImg(update.payload);
     } else {
-        setTimeout(initBoard, 200);
+        board = new DrawingBoard.Board('board', {
+            webStorage: false,
+            errorMessage: 'Failed to load the editor',
+        });
+        board.addControl('Lock');
     }
 };
 
-setImg = (url) => {
-    document.getElementById('board').innerHTML = '<img style="max-width:100%;height:auto" src="' + url +'">';
-};
-
-initBoard = () => {
-    const board = new DrawingBoard.Board('board', {
-        webStorage: false,
-        errorMessage: 'Failed to load the editor',
-    });
-    board.addControl('Lock');
-};
+onresize = () => board.resize();
