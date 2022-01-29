@@ -5,7 +5,7 @@ DrawingBoard.Control.Lock = DrawingBoard.Control.extend({
     initialize: function() {
 	this.$el.append('<button class="drawing-board-control-download-button"></button>');
 	this.$el.on('click', '.drawing-board-control-download-button', $.proxy(function(e) {
-            const desc = window.webxdc.selfName() + ' sent a draw';
+            const desc = window.webxdc.selfName + ' sent a draw';
             window.webxdc.sendUpdate({payload: this.board.getImg(), summary: desc}, desc);
 	    e.preventDefault();
 	}, this));
@@ -20,16 +20,17 @@ onload = () => {
     window.webxdc.setUpdateListener((update) => {
         setImg(update.payload);
     });
-    const update = window.webxdc.getAllUpdates()[0];
-    if (update) {
-        setImg(update.payload);
-    } else {
-        board = new DrawingBoard.Board('board', {
-            webStorage: false,
-            errorMessage: 'Failed to load the editor',
-        });
-        board.addControl('Lock');
-    }
+    window.webxdc.getAllUpdates().then((updates) => {
+        if (updates[0]) {
+            setImg(updates[0].payload);
+        } else {
+            board = new DrawingBoard.Board('board', {
+                webStorage: false,
+                errorMessage: 'Failed to load the editor',
+            });
+            board.addControl('Lock');
+        }
+    });
 };
 
 onresize = () => board.resize();
