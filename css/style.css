@@ -6,3 +6,13 @@ html, body {
     height: 100%;
     min-height: 100%;
 }
+
+#footer {
+    font-family: Courier,monospace,sans-serif;
+    position: fixed;
+    bottom: .5em;
+    left: .5em;
+    opacity:0.8;
+    z-index: 999;
+    text-decoration: none;
+}
