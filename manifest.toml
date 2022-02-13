@@ -2,8 +2,8 @@ name = "Draw"
 
 [store]
 id="com.github.adbenitez.draw"
-version_name=0.2
-version_code=1
+version_name=0.3
+version_code=2
 author="adbenitez"
 author_email="adbenitez@nauta.cu"
 description="Send draws in chats"
