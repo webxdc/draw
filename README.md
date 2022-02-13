@@ -2,10 +2,6 @@
 
 A webXdc app that allows to draw.
 
-## Test
-
-To test the app you can simply open the `index.html` file.
-
 ## Build
 
 ```sh
@@ -14,3 +10,7 @@ python3 ./build.py
 ```
 
 The output is a file with `.xdc` extension.
+
+## Test
+
+After building, to debug the app in a browser, you can simply open the file `build/index.html`
