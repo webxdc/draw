@@ -1,20 +1,4 @@
-initBoard = () => {
-    $('#board').html('');
-    new DrawingBoard.Board('board', {
-        webStorage: false,
-        errorMessage: 'Failed to load the editor',
-    }).addControl('Lock');
-};
-
-setImg = (url) => {
-    $('#board').html('<img style="max-width:100%;height:auto" src="' + url +'">');
-};
-
 onload = () => {
-    window.webxdc.setUpdateListener((update) => {
-        setImg(update.payload);
-    });
-
     DrawingBoard.Control.Lock = DrawingBoard.Control.extend({
         name: 'lock',
         initialize: function() {
@@ -26,20 +10,12 @@ onload = () => {
 	    }, this));
         }
     });
+    new DrawingBoard.Board('board', {
+        webStorage: false,
+        errorMessage: 'Failed to load the editor',
+    }).addControl('Lock');
 
-    window.webxdc.getAllUpdates().then((updates) => {
-        if (updates[0]) {
-            setImg(updates[0].payload);
-        } else {
-            initBoard();
-        }
-    });
-};
-
-onresize = () => {
-    window.webxdc.getAllUpdates().then((updates) => {
-        if (!updates[0]) {
-            initBoard();
-        }
-    });
+    window.webxdc.setUpdateListener((update) => {
+        $('#board').html('<img style="max-width:100%;height:auto" src="' + update.payload +'">');
+    }, 0);
 };
