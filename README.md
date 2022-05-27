@@ -2,6 +2,9 @@
 
 A webXdc app that allows to draw.
 
+[Download .xdc from Release Assets](https://github.com/webxdc/draw.xdc/releases), attach to a Delta Chat group and share your drawings!
+
+
 ## Build
 
 ```sh
