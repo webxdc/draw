@@ -2,6 +2,7 @@ DrawingBoard.Control.Menu = DrawingBoard.Control.extend({
     name: 'menu',
     initialize: function() {
 	    this.$el.append('<button id="menu-btn"></button><div id="dropdown-content"><a href="#" id="import-menuitem">Open...</a><a href="#" id="share-menuitem">Share</a></div>');
+
 	    this.$el.on('click', '#menu-btn', function(e) {
             document.getElementById("dropdown-content").classList.toggle("show");
 	        e.preventDefault();
@@ -46,4 +47,14 @@ onload = () => {
         stretchImg: true,
     });
     window.board.addControl('Menu');
+    window.focus(); // otherwise key events are not triggered if the app is inside an iframe
+
+    document.addEventListener('keydown', function(event) {
+        if (event.ctrlKey && event.key === 'z' && window.board.history.canUndo()) {
+            window.board.goBackInHistory();
+        }
+        if (event.ctrlKey && event.key === 'y' && window.board.history.canRedo()) {
+            window.board.goForthInHistory();
+        }
+    });
 };
