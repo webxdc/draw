@@ -7,16 +7,6 @@ html, body {
     min-height: 95%;
 }
 
-#footer {
-    font-family: Courier,monospace,sans-serif;
-    position: fixed;
-    bottom: .5em;
-    left: .5em;
-    opacity:0.8;
-    z-index: 999;
-    text-decoration: none;
-}
-
 #menu-btn {
     background-image: url("../assets/menu.svg");
     background-position: 50% 50%;
