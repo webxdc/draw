@@ -2,7 +2,8 @@
 
 A WebXDC app that allows to share draws.
 
-<img width="200" alt="draw" src="https://user-images.githubusercontent.com/9800740/170771244-cc1ce59e-9f9f-41bd-ae27-1e195cf930bb.png">
+<img width="200" alt="draw" src="https://github.com/webxdc/draw.xdc/raw/main/assets/capture-1.jpg">
+<img width="200" alt="draw" src="https://github.com/webxdc/draw.xdc/raw/main/assets/capture-2.jpg">
 
 [Download the latest version](https://github.com/webxdc/draw.xdc/releases/latest/download/draw.xdc), attach to a Delta Chat (or other [WebXDC-capable](https://webxdc.org) client) group and share your drawings!
 
