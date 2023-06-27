@@ -1,4 +1,5 @@
 name = "Draw"
+description = "Drawing board, share draws with friends!"
 app_id = "org.webxdc.draw"
-version = "3.0.0"
+version = "3.1.0"
 source_code_url = "https://github.com/webxdc/draw.xdc"
