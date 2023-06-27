@@ -1,16 +1,17 @@
-html, body {
-    height: 100%;
+html,
+body {
+  height: 100%;
 }
 
 #board {
-    height: 95%;
-    min-height: 95%;
+  height: 95%;
+  min-height: 95%;
 }
 
 #menu-btn {
-    background-image: url("../assets/menu.svg");
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
+  background-image: url("../assets/menu.svg");
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -19,7 +20,7 @@ html, body {
   position: absolute;
   background-color: #f1f1f1;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   right: 0;
   z-index: 9999;
 }
@@ -33,7 +34,11 @@ html, body {
 }
 
 /* Change color of dropdown links on hover */
-#dropdown-content a:hover {background-color: #ddd;}
+#dropdown-content a:hover {
+  background-color: #ddd;
+}
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block !important;}
+.show {
+  display: block !important;
+}
