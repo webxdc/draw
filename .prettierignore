@@ -1,0 +1,6 @@
+dist
+dist-xdc
+public
+webxdc.js
+webxdc.d.ts
+pnpm-lock.yaml

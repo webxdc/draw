@@ -1,2 +1,4 @@
 name = "Draw"
+app_id = "org.webxdc.draw"
+version = "3.0.0"
 source_code_url = "https://github.com/webxdc/draw.xdc"
