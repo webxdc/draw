@@ -23,6 +23,9 @@ jobs:
       - run: pnpm i
       - run: pnpm test
       - run: pnpm build
+      - name: Rename .xdc file for upload
+        run: |
+          mv ./dist-xdc/*.xdc ./dist-xdc/draw.xdc
 
       - name: Release
         uses: softprops/action-gh-release@v1
