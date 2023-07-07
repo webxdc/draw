@@ -19,6 +19,7 @@ pnpm i
 ### Running tests
 
 ```
+pnpm format:check
 pnpm test
 ```
 
@@ -29,11 +30,8 @@ To test your work in your browser (with hot reloading!) while developing:
 ```
 pnpm dev-mini
 # Alternatively to test in a more advanced WebXDC emulator:
-npm run dev
+pnpm dev
 ```
-
-**💡 TIP:** To debug inside Delta Chat, uncomment the `script` tag at the end of
-`index.html` file and your WebXDC will be packaged with developer tools inside!
 
 ### Building
 
@@ -43,13 +41,20 @@ To package the WebXDC file:
 pnpm build
 ```
 
+To package the WebXDC with developer tools inside to debug in Delta Chat, set the `NODE_ENV`
+environment variable to "debug":
+
+```
+NODE_ENV=debug pnpm build
+```
+
 The resulting optimized `.xdc` file is saved in `dist-xdc/` folder.
 
 ### Releasing
 
-To automatically build and create a new GitHub release with your `.xdc` file:
+To automatically build and create a new GitHub release with the `.xdc` file:
 
 ```
-git tag v1.0.1
+git tag -a v1.0.1
 git push origin v1.0.1
 ```
